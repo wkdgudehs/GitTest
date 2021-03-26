@@ -4,7 +4,8 @@ public class TestGitha {
 	public static void main(String args[]) {
 		System.out.println("dddddd");
 		System.out.println("dddddd");
+		System.out.println("금욜 11시 14분 컴퓨터가 조금 느려졋");
+		
 	}
 	
 }
-//젝할게요 ㅋㅋㅋㅋㅋ 저폴더딧어?그건 모르니까지금 이자바파일을 수정해도 푸쉬되는지?확인?아~
