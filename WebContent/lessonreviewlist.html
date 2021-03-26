@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰게시판목록</title>
+  	
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/hyeongdon.js"></script>
+    <script src="./js/reviewjs.js"></script>
+    <script>
+        $(function(){
+        	var $btHideObj;
+        	loginstatus();
+            var lessonId = getQueryString("lessonId");
+        	//^
+        	 var method = "get";
+             var url = "lessonreviewlist";
+        	//^
+        	var cp = 1;
+        	var reveiewcontentvalue=$("review_contents.review_textarea").val();
+            $.ajax ({
+            	dataType: "json",
+                url : url,
+                method: "get",
+                //data: 리뷰를 검색할 현재 레슨아이디,
+                data: {"current_page": cp, "lessonId": lessonId},
+                success: function(responseObj){
+                	// $()
+                	var arr = responseObj;                     
+                    var startPageValue = 0;
+                    var totalPageValue = 0;
+                    $(arr).each(function(index, element){
+                        //서버에서 전송해준 배열 값 수신
+                        startPageValue = element.startPage;
+                        var endPageValue = element.endPage;
+                        totalPageValue = element.totalPage;
+                		
+                    });
+                    showreview(responseObj);
+                    $formReviewObj = $('div.table>table');
+                    //더보기버튼 추가
+                    if(totalPageValue > cp){
+                        var $btMoreObj = $('<input type="button" class="seemore" value="더보기" style="display:none;">'); //더보기 조건 관련해서 수정
+                        console.log("더보기추가");
+                        $formReviewObj.append($btMoreObj);
+                        $btMoreObj.show();
+                        console.log("if문 들어간후 cp값"+cp);
+                        }
+                    $btHideObj = $btMoreObj;//더보기
+                },
+                complete : function(xhr,status) {
+                    
+                },
+                error : function(xhr, status, error) {
+                        console.log(error);
+                        console.log(responseObj);
+                }
+
+
+            });//ajax 끝부분
+          //----공지사항 더보기 클릭 시 게시글 생성 START-----
+            $("div.table>table").on('click','input[class="seemore"]',function(event){
+            	$btHideObj.hide();
+                cp +=1;
+                $.ajax ({
+                	// dataType: "json",
+                    url : url,
+                    method: "get",
+                    //data: {"reviewcontent":reveiewcontentvalue},
+                    data: {"current_page": cp, "lessonId":lessonId},
+                    success: function(responseObj){
+                    	var $reviewTableObj =$('<table>');           	
+                    	var arr = responseObj;                     
+                        var startPageValue = 0;
+                        var totalPageValue = 0;
+                        var reviewTableData = '';
+                        //var reviewTableData = '<tr><th>리뷰내용</th><th>날짜</th><th>작성자</th></tr>';
+                        var $reviewTableDataObj;
+                        
+                        $(arr).each(function(index, element){
+                            //서버에서 전송해준 배열 값 수신
+                            startPageValue = element.startPage;
+                            var endPageValue = element.endPage;
+                            totalPageValue = element.totalPage;
+                    		
+                        });
+                        showreview(responseObj);
+                        reviewTableData += '</table>';
+                        $reviewTableObj.html(reviewTableData);
+                        $formReviewObj = $('div.table>table');
+                        $formReviewObj.append($reviewTableObj);
+                        
+                        //더보기버튼 추가
+                        if(totalPageValue > cp){
+                            var $btMoreObj = $('<input type="button" class="seemore" value="더보기" style="display:none;">'); //더보기 조건 관련해서 수정
+                            console.log("더보기추가");
+                            $formReviewObj.append($btMoreObj);
+                            $btMoreObj.show();
+                            console.log("if문 들어간후 cp값"+cp);
+                            }
+                        $btHideObj = $btMoreObj;//ㄷㅓㅂㅗㄱㅣ
+                    },
+                    complete : function(xhr,status) {
+                        
+                    },
+                    error : function(xhr, status, error) {
+                            console.log(error);
+                            console.log(responseObj);
+                    }
+        	});//ajax 두번재끝
+         });//더보기 클릭끝
+         
+         //리뷰추가 테스트
+            $("div.cmd").on('click','input[name="save"]',function(event){        
+        //document.querySelector('#save').addEventListener('click', function(e){
+            if($("input:radio[name=rating]:checked").val() == undefined){
+                rating.showMessage('rate');
+                return false;
+            }
+            if(document.querySelector('.review_textarea').value.length < 5){
+                rating.showMessage('review');
+                return false;
+            }
+            console.log("리뷰작성 클릭");
+            console.log("레슨 아이디 확인:" + lessonId);
+            $.ajax({
+            url: "./writelessonreview", 
+            method: "post",
+            data: { //로그인된 아이디와 레슨아이디
+            lessonId :lessonId,
+            reviewcontent: $("textarea.review_textarea").val(),
+            reviewrecommend: $("input:radio[name=rating]:checked").val()
+            },// 전송할 데이터
+
+            success:function(responseObj){
+                var status = responseObj.status;
+                if(status == 1) {
+                    alert("리뷰등록완료!");
+                    location.reload();
+                }else if(status == 0){
+                    alert("로그인이 필요합니다");
+                    location.href = 'login.html';
+                }else if(status == -2){
+                    alert("수강신청을 한 이후에 수강후기 등록이 가능합니다");
+                }else if(status == -3){
+                    alert("이미 수강후기를 작성했습니다")
+                }else{
+                    alert("리뷰등록실패!");
+                }
+            }
+        });		
+            		rating.setRate(null, 0);
+            		document.querySelector('.review_textarea').value = '';
+                	});
+            	
+         
+         
+        });
+  	</script>
+  	<style>
+	    /*section>div.reviewlist{
+	        background-color: #e8e8e8;
+	    }*/
+	    
+	   	table {
+	    	width: 100%;
+	     	border-top: 1px solid #444444;
+	    	border-collapse: collapse;
+	    	text-align: center; 
+	   		 height:250px; 
+	    	/*width: 900px;*/
+	  	}
+	  	th, td {
+	     	border-bottom: 1px solid #444444;
+	    	padding: 10px;
+	  	}
+	  	 th {
+    		background-color: #F5F5F5;
+ 		 }
+	  	
+	  	.warning_msg {
+		    display: none;
+		    position: relative;
+		    text-align: center;
+		    background: #ffffff;
+		    line-height: 26px;
+		    width: 100%;
+		    color: red;
+		    padding: 10px;
+		    box-sizing: border-box;
+		    border: 1px solid #e0e0e0;
+		}
+				  	
+  
+    </style>
+      
+</head>
+<body>
+<center>
+<section>
+
+<div class="reviewlist">
+      <!-- <section>
+          <article class="title"><h1>수강후기</h1></article>
+      </section> -->
+      
+      	<br>
+      	<br>
+        <hr>
+        <div class="noticetitle"><h1>수강후기</h1></div>
+        <hr>
+    
+      <div class="wrap">
+       
+        <form name="reviewform" class="reviewform" method="post" action="/save">
+            <input type="hidden" name="rate" id="rate" value="0"/>
+            <p class="title_star"><h3>수강후기를 남겨주세요.</h3></p>
+     
+            <div class="review_rating">
+              	<div class="warning_msg" style="display: none;">추천/비추천을 선택해 주세요.</div> 
+                <div class="rating">
+                  	 
+                  	 <br>
+                    <input type="radio" name="rating" id="rating1" value="1" class="rate_radio" title="추천">
+                    <img alt="추천" src="./images/likebutton.png" height=63px; width=60px>
+                    <label for="rating1"></label>
+                    <input type="radio" name="rating" id="rating2" value="0" class="rate_radio" title="비추천">
+                    <img alt="비추천" src="./images/hate.png" height=60px; width=60px>
+                    <label for="rating2"></label>
+                </div>
+            </div>
+            
+            <div class="review_contents">
+            
+            <div class="warning_msg" style="display: none;">5자 이상으로 작성해 주세요.</div>
+                <textarea rows="10" cols="120" class="review_textarea"></textarea>
+                
+            </div>   
+            <div class="cmd">
+                <input type="button" name="save" id="save" value="등록" >
+            </div>
+        
+        </form>
+        
+   		</div>
+   		
+   		<br>
+            <br>
+   		<div class="table" id="rtable">
+   			<table>
+   			<B><tr><th>리뷰내용</th><th>날짜</th><th>추천여부</th><th>작성자</th></tr></B>
+   		</div>
+   		
+   		
+   		</div>
+   		</section>
+    </center>    
+</body>
+</html>

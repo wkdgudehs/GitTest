@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+        body *{
+            box-sizing: border-box;
+            font-family:'Raleway', sans-serif;
+            color : #222;
+            line-height : 1.5em;
+            font-weight:300;
+        }
+
+        li.findPwdText{
+            margin-bottom: 15px;
+            left: 50px;
+            font-weight: bold;
+            font-size:24px;
+        }
+
+        div.findPwdAction>ul{
+            list-style: none;
+            padding-left: 0px;
+            position: relative;
+            margin-left:40%;
+            margin-top:20%;
+        }
+
+        input.emailInput{
+            margin-top: 5px;
+            width: 250px;
+            border-radius: 4px;
+        }
+        
+        input.btFindPwd{
+            width: 250px;
+            margin-bottom: 10px;
+            background-color: rgb(255, 87, 87);
+            color:white;
+            font-weight: bold;
+        }
+        li.guidetitle{
+            font-size: 13px;
+        }
+        li.guidetext{
+            margin-top:10px;
+            line-height: 20px;
+            font-size:10px;
+            margin-bottom:10px;
+        }
+        </style>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+         <script>
+             $(function(){
+                 var $btFindPwdObj = $("ul>form");
+                 $btFindPwdObj.submit(function(){
+                    var emailValue = $("input[class=emailInput]").val();
+
+                    var url = "./findpwd";
+                    var method = "post";
+                    var data ={"email": emailValue};
+                    $.ajax({
+                        url: url,
+                        method: method,
+                        data: data,
+                        success:function(responseObj){
+                            if(responseObj.status==1){
+                                alert("비밀번호 재설정 메일이 전송되었습니다! 메일함을 확인해주세요!");
+                                location.href = "http://192.168.0.220/C4U";
+                            }else{
+                                alert("이메일을 찾을 수 없었습니다. 다시 입력해주세요!");
+                            }
+                        },
+                        error:function(jqXHR){
+                            alert(jqXHR.status);
+                        }
+                    });
+                    return false;
+                 });
+             });
+        </script>
+    </head>
+    <body>
+        <section>
+            <div class="findPwdAction">
+                <ul>
+                    <li class="findPwdText">비밀번호 찾기</li>
+                    <li class="guidetitle">이메일 주소</li>
+                    <li><input type="text" placeholder="가입하신 이메일주소를 입력해주세요" class="emailInput"></li>
+                    <li class="guidetext">가입 이메일을 입력하시면 새 비밀번호를 생성할 수 있는 링크를 보내드립니다.</li>
+                    <form method="post">
+                    <li><input type="submit" value="비밀번호 재설정" name="email" class="btFindPwd"></li>
+                    </form>
+                </ul>
+            </div>
+        </section>
+    </body>
+</html>

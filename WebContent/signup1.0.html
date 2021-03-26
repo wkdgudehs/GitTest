@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel ="stylesheet" href="signup1.0.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		var nameDupValue;
+		var emailDupValue;
+		let $btNameDupChk = $("input[class=nncheck]");
+		$btNameDupChk.click(function(){
+			var $nameObj = $("input[name=nickname]");
+			var nameValue = $nameObj.val();
+			if(nameValue.trim() == '') {
+				alert("닉네임을 입력하세요");
+				$nameObj.focus();
+				return false;
+			}
+			$.ajax({
+				url: "./namedupcheck",
+				method: "post",
+				data: {"student_name": nameValue},
+				success: function(responseObj){
+					if(responseObj.status == 1) {
+						alert("이미 존재하는 닉네임입니다");
+					}else {
+						alert("사용가능한 닉네임입니다");
+						nameDupValue = 1;
+						// var $btSignup = $("input[type=submit]");
+						// $btSignup.css("visibility", "visible");
+						console.log(nameDupValue);
+					}
+				},
+				error: function(jqXHR){
+					alert("AJAX요청응답 실패 : 에러코드=" + jqXHR.status);
+				}
+			});
+		});
+		let $btEmailDupChk = $("input[class=emcheck]");
+		$btEmailDupChk.click(function(){
+			var $emailObj = $("input[name=email]");
+			var emailValue = $emailObj.val();
+			if(emailValue.trim() == '') {
+				alert("이메일을 입력하세요");
+				$emailObj.focus();
+				return false;
+			}
+			$.ajax({
+				url: "./emaildupcheck",
+				method: "post",
+				data: {"student_email": emailValue},
+				success: function(responseObj){
+					if(responseObj.status == 1) {
+						alert("이미 존재하는 이메일입니다");
+					}else {
+						alert("사용가능한 이메일입니다");
+						emailDupValue = 1;
+						// var $btSignup = $("input[type=submit]");
+						// $btSignup.css("visibility", "visible");
+						console.log(emailDupValue);
+						$("div.registerbutton").css("visibility", "visible");
+					}
+				},
+				error: function(jqXHR){
+					alert("AJAX요청응답 실패 : 에러코드=" + jqXHR.status);
+				}
+			});
+		});
+		// if(nameDupValue == 1) {
+		// 	if(emailDupValue == 1){
+		// 		console.log("둘 다 1");
+		// 		$("div.registerbutton").css("visibility", "visible");
+		// 	}
+		// }
+
+		$("form").submit(function(){
+			var pwdValue = $("input.pwdbox").val();
+			var pwd1Value = $("input.pwdboxtwice").val();
+			if(pwdValue != pwd1Value) {
+				alert("비밀번호가 일치하지 않습니다");
+				$("input.pwdbox").focus();
+				return false;
+			}
+			var $phoneObj = $("input[name=phonenumber]");
+			var phoneValue = $("input.phonenumber").val();
+			if(phoneValue.trim() == '') {
+				alert("연락처를 입력하세요");
+				$phoneObj.focus();
+				return false;
+			}
+			var url = './signin';
+			var method = 'post';
+			var data = $('form').serialize();
+			console.log(data);
+			$.ajax({
+				url: url,
+				method: method,
+				data: data,
+				success : function(responseObj){
+					if(responseObj.status == 1) {
+						alert("가입을 성공했습니다. 로그인을 해주세요.");
+						location.href="http://192.168.0.220:8888/C4U";
+					}else{
+						alert("잘못 입력하였습니다.입력한 내용을 확인해주세요.");
+					}
+				},
+				error: function(jqXHR){
+					alert(jqXHR.status);
+				}
+			});
+			return false;
+		});
+	});
+</script>
+
+</head>
+<body>
+  <form>
+    <!--최상단-->
+    <div class="header">CLASS FOR YOU</div><hr>
+
+       <section class="container">
+            
+            <!--소제목--> 
+            <div class="nickname"><label>닉네임</label></div>
+             
+            <!--입력 창-->
+            <span class="nicknamebox">
+            	<input type="text" name="nickname" class="nn" maxlength="10" placeholder="닉네임을 입력해주세요 (최대 20자)" required>
+            </span>
+             
+            <!--에러 메세지 용 여백-->
+            <span class="errorboxnickname"></span>
+             
+            <!--확인 버튼-->
+            <input type = "button" value="확인" class="nncheck">
+             
+            <!--위와 같음-->
+             
+             
+             <div class="email"><label>이메일 주소</label></div>
+             <span class="emailbox">
+                 <input type="email" name="email" class="em" maxlength="50" placeholder="이메일 주소를 입력해주세요" style="ime-mode:disable" required>
+             </span>
+             
+             <span class="errorboxemail"></span>
+                 <input type="button" value="확인" class="emcheck">
+          
+          
+          
+    
+            <div class="password"><label>비밀번호</label></div>
+            <span class="passwordbox">
+                <input type="password" name="pwd" maxlength="15" class="pwdbox" placeholder="비밀번호를 입력해주세요" required>
+            </span>
+            
+            <div class="passwordcheckbox">
+                <input type="password" maxlength="15" class="pwdboxtwice" placeholder="비밀번호를 한번 더 입력해주세요" required>
+            </div>
+            
+            
+            <div class="cellphonenumber"><label>연락처</label></div>
+            <span class="cellphonenumberbox">
+                <input type="text" name="phonenumber" maxlength="15" class="phonenumber" placeholder="전화번호를 입력해주세요" required>
+            </span>
+         <!--가입하기 버튼-->
+        <div class="registerbutton">
+        <label>
+            <input type="submit"style="border: 0px; background-color:#FF4646; color: white; height:40px; width:150px;" value="가입하기"><!--<b>가입하기</b>-->
+        </label>
+        </div>
+    </section>
+    </form>  
+</body>
+</html>

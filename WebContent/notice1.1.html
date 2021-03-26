@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>공지사항</title>
+    <link rel ="stylesheet" href="notice1.1.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="./js/hyeongdon.js"></script>
+    <script>
+        $(function(){
+                var $btHideObj;
+                loginstatus();
+                $("body>div>section>article").empty();
+                var cp = 1;
+                var method = "get";
+                var url = "noticelist";
+                $.ajax({
+                    url:url,
+                    data: {"current_page":cp},
+                    method: method,
+                    success: function(responseObj){
+                        // alert("공지사항 조회");
+                        console.log(responseObj);
+                        //테이블 객체 생성
+                        var $noticeTableObj =$('<table class="noticetable">');
+                        
+                        //테이블 하위 html생성
+                        var noticeTableData ='<tr class="noticeheading"><th class="no">번호</th><th class="title">제목</th><th class="date">날짜</th></tr>';
+                        var $noticeTableDataObj;
+
+                        //서버에서 전송해준 배열 객체로 저장
+                        var arr = responseObj;                     
+                        var startPageValue = 0;
+                        var totalPageValue = 0;
+
+                        $(arr).each(function(index, element){
+                            //서버에서 전송해준 배열 값 수신
+                            var noticeIdValue = element.notice_id;
+                            var noticeTitleValue = element.notice_title;
+                            var noticeDateValue = element.notice_date;
+                            var noticeContentValue = element.notice_content;
+                            startPageValue = element.start_page;
+                            var endPageValue = element.end_page;
+                            totalPageValue = element.total_page;
+
+                            //새 줄 시작 번호 출력
+                            noticeTableData +='<tr class="notice_detail">';
+                            noticeTableData += '<td class="notice_id">';
+                            noticeTableData += noticeIdValue;
+                            noticeTableData += '</td>';
+                            //제목 출력
+                            noticeTableData += '<td class="notice_title">';
+                            noticeTableData += '<input type="hidden" value="';
+                            noticeTableData += noticeIdValue;
+                            noticeTableData += '">';
+                            noticeTableData += noticeTitleValue;
+                            noticeTableData += '</td>';
+                            //날짜 출력
+                            noticeTableData += '<td class="notice_date">';
+                            noticeTableData += noticeDateValue;
+                            noticeTableData += '</td></tr>';
+                            
+                        });
+                        //테이블을 닫아줌
+                        noticeTableData += '</table>';
+                        $noticeTableObj.html(noticeTableData);
+                        $divNoticeObj = $('div.notice');
+                        $formNoticeObj = $('div.notice>form');
+                        $formNoticeObj.append($noticeTableObj);
+                        console.log("if문 들어가기전 cp값"+cp);
+                        //더보기 버튼 추가
+                        if(totalPageValue > cp){
+                        var $btMoreObj = $('<input type="button" class="seemore" value="더보기" style="display:none;">'); //더보기 조건 관련해서 수정
+                        console.log("더보기추가");
+                        $formNoticeObj.append($btMoreObj);
+                        $btMoreObj.show();
+                        console.log("if문 들어간후 cp값"+cp);
+                        }
+                        $divNoticeObj.append($formNoticeObj);
+                        $('section>article').append($divNoticeObj);
+                        $divNoticeObj.show();
+                        $btHideObj = $btMoreObj;
+                    },
+                    error: function(jqXHR){
+                        alert("오류 내용: "+jqXHR.status);
+                    }
+                });
+            
+            // //기본 이벤트처리 막기
+            // return false; //event.preventDefault(); event.stopPropagation();
+
+            //----공지사항 더보기 클릭 시 게시글 생성 START-----
+            $("section>article").on('click','input[class="seemore"]',function(event){
+                $btHideObj.hide();
+                cp +=1;
+                // console.log("더보기를 누른다");
+                var url = 'noticelist';
+                var method = "get";
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: {"current_page": cp},
+                    success: function(responseObj){
+                        // alert("공지사항 조회");
+                        // console.log(responseObj);
+                        //테이블 객체 생성
+                        var $noticeTableObj =$('<table class="noticetable">');
+                        
+                        //테이블 하위 html생성
+                        var noticeTableData ='<tr></tr>';
+                        var $noticeTableDataObj;
+
+                        //서버에서 전송해준 배열 객체로 저장
+                        var arr = responseObj;                     
+                        var startPageValue = 0;
+                        var totalPageValue = 0;
+
+                        $(arr).each(function(index, element){
+                            //서버에서 전송해준 배열 값 수신
+                            var noticeIdValue = element.notice_id;
+                            var noticeTitleValue = element.notice_title;
+                            var noticeDateValue = element.notice_date;
+                            var noticeContentValue = element.notice_content;
+                            startPageValue = element.start_page;
+                            var endPageValue = element.end_page;
+                            totalPageValue = element.total_page;
+
+                            //새 줄 시작 번호 출력
+                            noticeTableData +='<tr class="notice_detail">';
+                            noticeTableData += '<td class="notice_id">';
+                            noticeTableData += noticeIdValue;
+                            noticeTableData += '</td>';
+                            //제목 출력
+                            noticeTableData += '<td class="notice_title">';
+                            noticeTableData += '<input type="hidden" value="';
+                            noticeTableData += noticeIdValue;
+                            noticeTableData += '">';
+                            noticeTableData += noticeTitleValue;
+                            noticeTableData += '</td>';
+                            //날짜 출력
+                            noticeTableData += '<td class="notice_date">';
+                            noticeTableData += noticeDateValue;
+                            noticeTableData += '</td></tr>';
+                            
+                        });
+                        //테이블을 닫아줌
+                        noticeTableData += '</table>';
+                        $noticeTableObj.html(noticeTableData);
+                        $divNoticeObj = $('div.notice');
+                        $formNoticeObj = $('div.notice>form');
+                        $formNoticeObj.append($noticeTableObj);
+                        console.log("if문 들어가기전 cp값"+cp);
+                        //더보기 버튼 추가
+                        if(totalPageValue > cp){
+                        var $btMoreObj = $('<input type="button" class="seemore" value="더보기" style="display:none;">'); //더보기 조건 관련해서 수정
+                        console.log("더보기추가");
+                        $formNoticeObj.append($btMoreObj);
+                        $btMoreObj.show();
+                        console.log("if문 들어간후 cp값"+cp);}
+                        // }else if(totalPageValue < cp){
+                        //     $btMoreObj.hide();
+                        // }
+                        $divNoticeObj.append($formNoticeObj);
+                        $('section>article').append($divNoticeObj);
+                        $divNoticeObj.show();
+                        $btHideObj = $btMoreObj;
+                    },
+                    error: function(jqXHR){xv
+                        alert(jqXHR.status);
+                    }
+                });
+            });
+            //----공지사항 더보기 클릭 시 게시글 생성 END-----
+
+            //----공지사항 상세 게시글 처리 START-----
+            $('section>article').on('click','td.notice_title',function(event){
+                console.log("게시글을 누른다");
+                var noticeIdValue = $(event.target).find('input').val();
+                console.log(noticeIdValue);
+                
+                //article 영역 비워주기
+                $("body>div>section>article").empty();
+                var url = "noticedetail";
+                var data = {"notice_id":noticeIdValue};
+                var method = "get";
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: data,
+                    success: function(responseObj){
+                        console.log("요청성공");
+                        console.log(responseObj);
+                        //테이블 객체 생성
+                        console.log("테이블객체생성");
+                        var $noticeDetailTableObj =$('<table class="noticeDetailTable">');
+                        //테이블 하위 html생성
+                        console.log("테이블하위html생성");
+                        var noticeDetailTableData = '<tbody>';
+                        noticeDetailTableData +='<tr class="noticeDetailRow"><th class="noticeDetailTitle">';
+                        noticeDetailTableData += responseObj.noticeTitle;
+                        noticeDetailTableData += '</th></tr>';
+                        
+                        noticeDetailTableData += '<tr class="noticeDetailRow"><td class="noticeDetailDate">';
+                        noticeDetailTableData += responseObj.noticeDate;
+                        noticeDetailTableData += '</td></tr>';
+                        
+                        noticeDetailTableData += '<tr class="noticeDetailRow"><td class="noticeDetailContent">';
+                        noticeDetailTableData += responseObj.noticeContent;
+                        noticeDetailTableData += '</td></tr>';
+                        noticeDetailTableData += '</tbody>';
+                        noticeDetailTableData += '</table>';
+
+                        console.log(noticeDetailTableData);
+                        //공지사항 상세에 공지사항 테이블 내용 넣기
+                        $noticeDetailTableObj.html(noticeDetailTableData);
+                        // console.log($noticeDetailTableObj.html());
+                        
+                        //공지사항 상세에 목록으로 돌아가기 버튼 추가하기
+                        $btBackToNoticeMain = $('<input type="button" class="backToNoticeMain" value="목록으로 돌아가기">');
+
+                        //공지사항 상세 내용을 넣을 div영역 찾기
+                        $divNoticeDetailObj = $('div.noticedetail');
+                        //공지사항 상세 내용 화면에 보여주기
+                        $divNoticeDetailObj.append($noticeDetailTableObj);
+                        $noticeDetailTableObj.after($btBackToNoticeMain);
+                        $('section>article').append($divNoticeDetailObj);
+                        $divNoticeDetailObj.show();
+
+                        $btBackToNoticeMain.click(function(){
+                            $.ajax({
+                                url:"noticelist",
+                                method: "get",
+                                success: function(){
+                                    alert("목록으로돌아갑니다");
+                                    location.href ="http://192.168.0.220:8888/C4U/notice1.1.html";
+                                },
+                                error: function(jqXHR){
+                                    alert(jqXHR.status);
+                                }
+                            });
+                        });
+                        if(responseObj.status == -1){
+                            alert("공지사항 게시글이 존재하지 않습니다. 목록화면으로 돌아갑니다.");
+                            location.href ="http://192.168.0.220:8888/C4U/notice1.1.html";
+                        }
+                    },
+                    error: function(jqXHR){
+                        alert(jqXHR.status);
+                    }
+                });
+                // return false;
+            });
+            //----공지사항 상세 게시글 처리 END-----
+            $("article.search>input[name=search]").keyup(function(e){if(e.keyCode == 13) search(); });
+        let $menuObj = $("header>article>a");
+        $menuObj.click(function(){
+            let hrefValue = $(this).attr("href");
+            switch(hrefValue) {
+                case 'categorylist':
+                $("div.bg").show();
+                $("div.modal").empty();
+                $.ajax({
+                    url: hrefValue,
+                    method: "get",
+                    success: function(responseObj){ //data는 응답내용, 성공응답
+                        if(responseObj.status == undefined) {
+                            var $tableObj = $("<table>");
+                            var arr = responseObj;
+                            var ct = 100;
+                            var tableData = '<tr>';
+                            $(arr).each(function(index, element){
+                                if(element.categoryId - ct < 10){
+                                    if(element.categoryId%100 == 0){
+                                        tableData += '<th>';
+                                        tableData += element.categoryName;
+                                        tableData += '</th>';
+                                        tableData += '<tr>';
+                                        tableData += '<td><input type="hidden" class="ctid" value="';
+                                        tableData += element.categoryId;
+                                        tableData += '">모든 ';
+                                        tableData += element.categoryName;
+                                        tableData += '</td>';
+                                        tableData += '</tr>';
+                                    }
+                                    if(element.categoryId%100 != 0){
+                                        tableData += '<td><input type="hidden" class="ctid" value="';
+                                        tableData += element.categoryId;
+                                        tableData += '">';
+                                        tableData += element.categoryName;  
+                                        tableData += "</td>";
+                                    }                                	
+                                ct += 100;
+                                }
+                            tableData += '</tr>';
+                            tableData += '<tr>';
+                            });
+                            console.log(tableData);
+                            tableData += '</tr>';
+                            $tableObj.html(tableData);
+                            $("div.modal").append($tableObj);
+                        }
+                        $("div.bg").toggleClass("hide");
+                        var $categoryNameObj = $("div.modal td");
+                        $categoryNameObj.click(function(event){
+                            $("section.classname1").empty();
+                            $("section.noticesection").empty();
+                            $("nav").remove();
+                            var categoryIdValue = $(event.target).find("input").val();
+                            $.ajax({
+                                url: "./categorylist",
+                                method: "post",
+                                data: {"categoryId": categoryIdValue},
+                                success: function(responseObj){
+                                    if(responseObj.status == undefined) {
+                                        console.log(responseObj);
+                                        $(responseObj).each(function(index, element){
+                                        //article객체생성
+                                        var $articleObj = $('<article>');
+                                        var articleHtml = "<ul>";
+                                        articleHtml += '<li>';
+                                        articleHtml += "<img src='./images/th"+ element.lesson_id +".jpg' alt='th" + element.lesson_id +".jpg'>";
+                                        articleHtml += "</li>";
+                                        articleHtml += "<li><b>&nbsp;&nbsp;&nbsp;";
+                                        articleHtml += element.lesson_name;
+                                        articleHtml += "</b></li>";
+                                        articleHtml += "<li>&nbsp;&nbsp;&nbsp;&nbsp;";
+                                        articleHtml += element.lesson_total_amount;
+                                        articleHtml += "</li>";
+                                        articleHtml += "<li>&nbsp;&nbsp;&nbsp;&nbsp;";
+                                        articleHtml += element.targetpercent + "%";
+                                        articleHtml += "</li>";
+                                        articleHtml += "<li>&nbsp;&nbsp;&nbsp;&nbsp;";
+                                        articleHtml += element.lesson_diffdays + "일 남음";
+                                        articleHtml += "</li>";
+                                        
+                                        
+                                        articleHtml += "</ul>";
+                                        //    var idValue = getQuery 
+                                        //     data: {"lessonId" : idValue}
+                                        $articleObj.attr("class", element.lesson_id);
+                                        $articleObj.attr("onclick", "location.href='classdetail.html?lessonId=" + element.lesson_id+"'" );
+                                        $articleObj.html(articleHtml);
+
+                                        $("section.classname1").append($articleObj);
+
+                                        });
+                                        
+                                    }else if(responseObj.status == -1) {
+                                        console.log(responseObj.status);
+                                        var $categoryzeroObj = $('<article>');
+                                        var categoryzeroHtml = "<h5>해당 카테고리에 진행중인 강좌가 없습니다</h5>";
+                                        $categoryzeroObj.html(categoryzeroHtml);
+                                        $categoryzeroObj.css("background-color","white");
+                                        $("section.classname1").append($categoryzeroObj);
+                                    }
+                                    $("div.bg").hide();
+                                },
+                                error: function(jqXHR){ //실패응답
+                                    alert("AJAX요청응답 실패 : 에러코드=" + jqXHR.status);
+                                } 
+                            });
+                        });
+                    },
+                    error: function(jqXHR){ //실패
+                        alert("AJAX요청응답 실패 : 에러코드=" + jqXHR.status);
+                    }
+                });
+                return false;
+                break;
+            case 'logout' :
+                $.ajax({
+                    url : hrefValue,
+                    success: function(){
+                        location.href = "http://192.168.0.220:8888/C4U";
+                    },
+                    error: function(jqXHR){ //실패
+                        alert("AJAX요청응답 실패 : 에러코드=" + jqXHR.status);
+                    }
+                });
+                return false;
+                break;
+            }
+        });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <article class = "category"><a href="categorylist">카테고리</a></article>
+            <article class = "classopen"><a href="C4UOpeningACourse.html" onclick="window.open(this.href, '_blank', 'width=1100, height=600'); return false;">강좌 개설하기</a></article>
+          <article class = "logo"><a href="http://192.168.0.220:8888/C4U"><p style= "font-size: 25px; font-style: italic; font-weight: 700;">ClassForYou</p></a></article>
+            <article class = "search"><input type="text" placeholder = "강좌검색" name = "search"></article>
+    
+            <article class = "login"><a href="login.html">로그인</a></article>
+            <article class = "join"><a href="signup1.0.html">회원가입</a></article>
+    
+            <article class = "mypage"><a href="mypage1.4.html">마이페이지</a></article>	
+            <article class = "logout"><a href="logout">로그아웃</a></article>
+        </header>
+        <hr>
+        <nav>
+        <div class="noticetitle">공지사항</div>
+        <hr>
+        </nav>
+
+        <section class="noticesection">
+            <article>바뀌는영역 article</article>
+            <!--공지사항 게시판 보기용 div-->
+            <div class="notice" style="display:none;"><form method="get"></form></div>
+            <!--공지사항 세부영역 보기용 div-->
+            <div class="noticedetail" style="display:none;"></div>
+        </section>
+
+        <section class="classname1"></section>
+    </div>
+    <div class="bg">
+        <div class="modal">
+        </div>
+    </div>
+<!--푸터영역-->
+    <footer>
+        <div class="left">
+            <a href="notice1.1.html" style="padding-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;Notice</a>
+            <a href="C4UTermsAndConditions.html" onclick="window.open(this.href, '_blank', 'width=1100, height=600'); return false;">&nbsp;&nbsp;&nbsp;&nbsp;Terms and Condition</a>
+            <a href="C4UPrivacyPolicy.html" onclick="window.open(this.href, '_blank', 'width=700, height=600'); return false;">&nbsp;&nbsp;&nbsp;&nbsp;Privacy Policy</a>
+            <!-- <a href="#none">&nbsp;&nbsp;&nbsp;&nbsp;Contact US</a> -->
+            <p align='center'>C4U(주) |대표 박찬익 293-92-00460 | 경기도 성남시 분당구 성남대로34, 하나프라자빌딩 6층 (구미동) | 통신판매업 2020-10101010-30-7-12345 | 대표전화 02-1004-1004 © 2021 ClassForU Inc.</p>
+        </div>
+    </footer>
+</body>
+</html>

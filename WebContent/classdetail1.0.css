@@ -1,0 +1,301 @@
+*{
+    list-style-type: none;
+    text-decoration: none;
+    color : #222;
+}
+.container {
+    border : 1px solid white;
+    width : 1920px;
+   text-align:center;
+    vertical-align:middle; display:table-cell;
+    background-attachment: fixed;
+
+
+}
+header {
+    background-color : white;
+    height : 100px;
+    /* position: fixed; */
+    top: 0px;
+    align-items:center;
+    justify-content:center;
+}
+
+header article {
+    background-color : white;
+    width : 140px;
+    text-align:center;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.category{
+   display: inline-block;
+    
+}
+.classopen{
+    display: inline-block;
+}
+.logo{
+    display: inline-block;
+    width : 300px;
+}
+.search{
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:left;
+    width:200px;
+    border-radius:60px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+.search>input {
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:center;
+    width:200px;
+    border-radius:60px;
+    border-width: 0px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+input:focus {outline:none;}
+.login{
+    display: inline-block;
+}
+.join{
+    display: inline-block;
+}
+.mypage{
+    display: inline-block;
+}
+.logout{
+    display: inline-block;
+} 
+.lessonname{
+     text-align:center;
+    margin:35px 10px;
+}
+
+.lessonpic {
+    display: inline-block;
+    width: 500px;
+    height: 430px;
+}
+
+.lessontext{
+    display:inline-block;
+    list-style:none;
+    text-align:left;
+}
+
+.lessonmoney{
+    display:inline-block;
+    padding: 5px 20px;
+    background-color:white;
+    border:0px;
+    border-radius : 5px;
+    padding: 3px 80px 3px 80px;
+    margin-left: 40px;
+    font-weight: bold;
+}
+.register{
+    padding-bottom: 13px;
+    padding-top: 13px;
+    padding-right: 60px;
+    padding-left: 60px;
+    display:inline-block;
+    background-color:#FF4646;
+    border-radius:10px;
+    border:0px;
+    margin: 0px 0px 0px 80px;
+    color: white;
+    font-weight: bold;
+
+    /* background-color: #FF5F5F !important; */
+    /* height: 60px; */
+    border-radius: 12px;
+    font-size: 18px;
+    /* font-weight: Normal; */
+    border: none;
+    /* padding: 0px 24px; */
+    line-height: 27px;
+    /* text-decoration: none !important; */
+    display: inline-flex !important;
+    align-items: center;
+    /* font-family: 'Cookie', cursive !important; */
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+.register:hover{
+    color: darkblue;
+}
+
+.good{
+    margin:10px 30px 0px 550px;
+    display:inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    color: lightgray;
+}
+.good:hover{
+    color: #323232;
+}
+
+.rcmd{
+    display:inline-block;
+    margin:10px 30px 0px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #323232;
+}
+
+.share{
+    display:inline-block;
+    margin:10px 30px 0px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: lightgray;
+}
+.share:hover{
+    color:#323232;
+}
+.detailcate{
+    list-style:none;
+    padding:10px 20px;
+    width:400px;
+    float:left;
+}
+.detailcate li{
+    width:100px;
+    box-sizing:border-box;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.menu1{
+    text-align:left;
+    display:block;
+    margin: 0px;
+    
+}
+
+/* .menu2{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.menu3{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.menu4{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.menu5{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+} */
+
+.detailbox1{
+    width:1100px;
+    height: 5000px;
+    background-size: auto;
+    display:block;
+}
+
+.teacherbox1{
+    width:1100px;
+    height:400px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.teacherbox2{
+     width:1100px;
+    height:400px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.teacherbox3{
+     width:1100px;
+    height:400px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.materialbox1{
+     width:1100px;
+    height:600px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.registerbox1{
+     width:1100px;
+    height:800px;
+    background-color:lightgrey;
+    display:block;
+}
+
+
+.reviewbox1{
+     width:1100px;
+    height:600px;
+    background-color:lightgrey;
+    display:block;
+}
+div.bg{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    border: 1px solid;
+    left: 0px;
+    top: 50px;
+    width: 140px;
+    height: 610px;
+    margin: 10px;
+    overflow: auto;
+    /* 레이어 색깔 */
+    background-color: rgb(231, 231, 231, 0.5);
+    border-width: 0px;
+}
+div.bg>div.modal{
+    margin-top: 15px;
+}
+.classname1 {
+    display:inline-block;
+    width: 1080px;
+    text-align:left;
+    padding: 0px;
+    margin-left: 195px;
+}
+.classname1>article{
+    width:330px;
+    height:350px;
+    background-color:lightgrey;
+    display:inline-block;
+    margin:80px 15px 15px 15px;
+    text-align:left;
+    box-sizing: border-box;
+}
+.classname1>article>ul{
+    padding: 0px;
+    margin: 0px;
+}

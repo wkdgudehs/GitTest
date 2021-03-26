@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>공지사항</title>
+    <link rel ="stylesheet" href="noticedetail.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="./js/hyeongdon.js"></script>
+    <script>
+        $(function(){
+            var url = "noticedetail";
+            var method = "get";
+            
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <article class = "category"><a href="#none">카테고리</a></article>
+            <article class = "classopen"><a href="#none">강좌 개설하기</a></article>
+            <article class="logo">C4U</article>
+            <article class = "search">      search </article>
+            <article class = "login"><a href="#none">로그인</a></article>
+            <article class = "join"><a href="#none">회원가입</a></article>
+        </header>
+        <hr>
+        <div class="noticeTitle">공지사항</div>
+        <hr>
+        <section>
+            <article>바뀌는영역 article</article>
+        
+            <!--공지사항 상세 보기용 div-->
+            <div class="noticeDetail">
+                <table class="noticeDetailTable">
+                    <tr class="noticeDetailRow">
+                        <th class="noticeDetailTitle">[이용약관]C4U 이용약관</th>
+                    </tr>
+                    <tr class="noticeDetailRow">
+                        <td class="noticeDetailDate">2021-01-22 18:00</td>
+                    </tr>
+                    <tr class="noticeDetailRow">
+                        <td class="noticeDetailContent">공지사항에 들어가는 내용들입니다.</td>
+                    </tr>
+                </table>
+                <input type="button" class="backToNoticeMain" value="목록으로 돌아가기">
+            </div>
+        </section>
+    </div>
+    
+<!--푸터영역-->
+    <div class="left">
+        <a href="#none">Notice</a>
+        <a href="#none">Terms and Condition</a>
+        <a href="#none">Privacy Policy</a>
+        <a href="#none">Point Policy</a>
+        <a href="#none">Contact US</a>
+    </div>
+    <footer></footer>
+</body>
+</html>

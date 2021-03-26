@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+*{
+    list-style-type: none;
+}
+body {
+    font-family:'Raleway', sans-serif;
+    color : #222;
+    line-height : 1.5em;
+    font-weight:300;
+}
+.container {
+    border : 1px solid white;
+    width : 1920px;
+    /* text-align:center; */
+    vertical-align:middle;
+    display:table-cell;
+}
+header {
+    background-color : white;
+    height : 100px;
+    /* position: fixed; */
+    display: inline-block;
+    text-align:center;
+    vertical-align:middle;
+    justify-content:center;
+    margin-left: 13.5%;
+}
+header article {
+    background-color : white;
+    width : 140px;
+    text-align:center;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.category{
+   display: inline-block;
+}
+.mypage{
+    display: inline-block;
+}
+.classopen{
+    display: inline-block;
+}
+.logo{
+    display: inline-block;
+    width : 300px;
+}
+.search{
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:left;
+    width:200px;
+    border-radius:60px;
+    height: 40px;
+}
+.search>input {
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:center;
+    width:200px;
+    border-radius:60px;
+    border-width: 0px;
+    height: 40px;
+}
+input:focus {outline:none;}
+.login{
+    display: inline-block;
+}
+.join{
+    display: inline-block;
+}
+.logout{
+    display: inline-block;
+}
+.classname1{
+    margin-left: 220px;
+    display:inline-block;
+    width: 1080px;
+    text-align:left;
+    list-style-type: none;
+    box-sizing: border-box;
+    
+}
+.classname1>article{
+    width:330px;
+    height:350px;
+    background-color:lightgrey;
+    display:inline-block;
+    margin:80px 15px 15px 15px;
+    text-align:left;
+}
+.classname1>article>ul{
+    padding: 0px;
+    margin: 0px;
+}
+/*마이페이지 스타일*/
+/*hr 선 연하게 지정*/
+body hr{
+    opacity: 35%;
+}
+/*마이페이지 제목*/
+div.container>div.mypagetitle{
+    text-align:left;
+    font-size: 35px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 11.5%;
+}
+/*마이페이지 카테고리 소메뉴 전체*/
+div.container>nav>ul{
+    text-align:left;
+    margin-left: 10.5%;
+    margin-top: 50px;
+}
+/*마이페이지 카테고리 소메뉴 항목*/
+div.container>nav>ul>li.mypagecategory{
+    text-align:left;
+    list-style:none;
+    display:inline-block;
+    width: 200px;
+}
+/*마이페이지 카테고리 소메뉴 항목 hover시 강조*/
+.mypagecategory:hover{
+    font-weight: bold;
+}
+
+/*마이페이지 수강현황 소제목 스타일*/
+.lessonlisttitle{
+    font-size: 30px;
+    font-weight: 400;
+    margin-left: 165px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/*마이페이지 수강현황 영역 지정 */
+.lessonlist{
+    width: 1100px;
+    margin-left: 220px;
+}
+
+/*마이페이지 수강현황 강좌당 스타일*/
+.lesson{
+    /* border: 1px solid rgba(0,0,0,0.2); */
+    float: left;
+    padding: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/*마이페이지 수강현황 강좌 이미지 스타일*/
+.lessonimg{
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    float:left;
+}
+
+/*마이페이지 수강현황 강좌 설명 스타일*/
+.lessoninfo{
+    width: 685px;
+    height: 150px;
+    margin-left: 20px;
+    border-radius: 10px;
+    float:left;
+    padding-top: 10px;
+}
+
+/*마이페이지 수강현황 강좌 설명 전체 스타일*/
+.lessontitle, .lessonenddate, .lessonstartdate, .lessonfee, .lessonstatussuccess, .lessonstatushold, .lessonstatusfail{
+    margin-left: 7px;
+}
+
+/*마이페이지 수강현황 강좌 대기 상태 스타일*/
+.lessonstatushold{
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 10px;
+    color: slategrey;
+}
+
+/*마이페이지 수강현황 강좌 성공 상태 스타일*/
+.lessonstatussuccess{
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgb(0,112,192);
+}
+
+/*마이페이지 수강현황 강좌 실패 상태 스타일*/
+.lessonstatusfail{
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgb(255, 87, 87);
+}
+
+/*마이페이지 수강현황 강좌 제목 스타일 */
+.lessontitle{
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+/*마이페이지 수강현황 더보기 버튼 스타일*/
+.btmypagelessonmore{
+   margin-left: 40px;
+   height: 50px;
+   width: 945px;
+   text-align: center;
+   border: 1px solid;
+   border-radius: 10px; 
+   margin-bottom: 30px; 
+}
+
+
+/*마이페이지 좋아요 영역 지정 */
+.heartlessonlist{
+    width: 1500px;
+    margin-left: 245px;
+    /* float: left; */
+}
+/*마이페이지 레슨 한 개 통합*/
+
+.heartlessontotal{
+    float: left;
+    
+}
+
+/*마이페이지 좋아요 레슨 */
+.heartlesson{
+    /* float: left; */
+    width: 1200px;
+}
+
+/*마이페이지 좋아요 소제목 스타일*/
+.heartlessonlisttitle{
+    font-size: 30px;
+    font-weight: 400;
+    margin-left: 165px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/*마이페이지 좋아요 강좌 이미지 스타일*/
+.heartlessonimg{
+    width: 330px;
+    height: 240px;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+}
+
+/*마이페이지 좋아요 강좌 설명 스타일*/
+.heartlessoninfo{
+    width: 330px;
+    height: 150px;
+    /* border: 1px solid; */
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/*마이페이지 좋아요 강좌 설명 전체 스타일*/
+.heartlessonname, .heartlessondescription, 
+.heartlessontotalamount,.heartlessondiffdays,
+.heartlessontargetpercent {
+    margin-left: 2px;
+}
+
+
+/*마이페이지 좋아요 강좌 제목 스타일 */
+.heartlessonname{
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/*마이페이지 좋아요 강좌 한 줄 설명 스타일*/
+.heartlessondescription{
+    font-weight: 200;
+    font-size: 13px;
+}
+/*마이페이지 좋아요 강좌 총액 스타일*/
+.heartlessontotalamount{
+    margin-top: 5px;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 20px;
+}
+/*마이페이지 좋아요 달성률 스타일*/
+.heartlessontargetpercent{
+    margin-top: 5px;
+    margin-left: 10px;
+    font-weight: 350;
+    display: inline-block;
+    color: rgb(255, 87, 87);
+}
+/*마이페이지 좋아요 디데이 스타일*/
+.heartlessondiffdays{
+    margin-top: 5px;
+    margin-left: 160px;
+    display: inline-block;
+    text-align: left;
+    opacity: 60%;
+}
+
+/*마이페이지 좋아요 더보기 버튼 스타일*/
+.btmypageheart{
+   margin-left: 30px;
+   height: 50px;
+   width: 1000px;
+   text-align: center;
+   border-radius: 10px; 
+   border: 1px solid;  
+   margin-bottom: 30px; 
+}
+
+/*내 정보 테이블 스타일*/
+table {
+    border-collapse: collapse;   
+}
+
+.myinfo{
+    margin-left: 90px;
+}
+
+.default, .modifymyinfo{
+    margin-left: 180px;
+}
+/*테이블 모든 행 적용*/
+tr, td{
+    text-align: left;
+    line-height: 30px;
+    padding : 10px;
+}
+
+.tdbtpwdchk{
+    padding-left: 100px;
+}
+/*비밀번호 찾기, 비밀번호 안내 스타일 공통적용*/
+td.pwdinfo, td.lostpwd{
+    padding: 0px;
+    font-size: 5px;
+    text-align: center;
+    margin : 0px;
+}
+/*비밀번호 찾기*/
+td.lostpwd{
+    font-size: 8px;
+    padding: 0px;
+}
+
+/*확인버튼*/
+td.btok{
+    text-align: center;
+    margin-left: 30px;
+}
+/*비밀번호 변경 버튼 위치 가운데 조정*/
+.tdbtok{
+    padding-left: 100px;
+}
+/*테이블 첫 번째 행 모두 bold*/
+td.first{
+    font-weight:bold;
+    width: 200px;
+}
+
+td.second{
+    width: 250px;
+}
+
+
+/*푸터영역 스타일*/
+footer {
+    text-align:left;
+}
+.left {
+    background-color:lightgrey;
+    border-top-color:lightgrey;
+    border-top:150px;
+    border-bottom-color:lightgrey;
+    border-bottom:50px;
+    height: 160px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #787878;
+}
+a {
+    color: #222;
+    text-decoration: none;
+}
+.left a{
+    display: block;
+    font-size: 20px;
+    margin: 15px 0;
+   font-weight: bold;
+}
+.left:hover a {
+    opacity:0.3;
+    color: #787878;
+}
+.left a:hover {
+    opacity:1;
+    color: #787878;
+}
+div.bg{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    border: 1px solid;
+    left: 0px;
+    top: 50px;
+    width: 140px;
+    height: 610px;
+    margin: 10px;
+    overflow: auto;
+    /* 레이어 색깔 */
+    background-color: rgb(231, 231, 231, 0.5);
+    border-width: 0px;
+}
+div.bg>div.modal{
+    margin-top: 15px;
+}

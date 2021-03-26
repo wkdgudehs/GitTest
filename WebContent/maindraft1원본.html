@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메인페이지</title>
+    <link rel ="stylesheet" href="maindraft1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //DOM트리에서 메뉴객체들 모두찾기
+            let $menuObj = $("header>article");
+            $menuObj.click(function(){
+                //메뉴객체의 href속성값 얻기
+                let hrefValue = $(this).attr("href");
+                console.log(hrefValue);
+                //AJAX
+                switch(hrefValue) {
+                case 'categorylist':
+                	console.log(hrefValue);
+                    $.ajax({
+                        url: hrefValue, //요청URL
+                        method: "get", //요청방식, method가 get이면 생략가능
+                        success: function(responseObj){ //data는 응답내용, 성공응답
+                        	if(responseObj.status == undefined) {
+                                var tableObj = $("<table>");
+                                var arr = responseObj;
+                                var tableData = "<tr>";
+                                $(arr).each(function(index, element){
+                                    tableData += element.category_parent_id;  
+                                    tableData += "</tr>"
+                                });
+                            }
+                        },
+                        error: function(jqXHR){ //실패응답
+                            alert("AJAX요청응답 실패 : 에러코드=" + jqXHR.status);
+                        }
+                    });
+                    break;
+                default :
+                    location.href = "maindraft1.html";
+                }
+            });
+            //상품목록메뉴 클릭이벤트를 강제 발생
+            //DOM트리에서 상품목록메뉴객체 찾기
+            //console.log($("header>nav>ul>li>a[href=productlist]"));
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+        <article class = "category"><a href="categorylist">카테고리</a></article>
+        <article class = "classopen"><a href="#none">강좌 개설하기</a></article>
+        <article class = "logo"><a href="#none">C4U</a></article>
+        <article class = "search"><input type="search"></article>
+        <article class = "login"><a href="login">로그인</a></article>
+        <article class = "join"><a href="#none">회원가입</a></article>
+        </header>
+        
+        <section class = "thebiggestbox">
+           <article class = "pic"></article>
+           <article class = "text">INTRODUCTION</article>
+            
+        </section>
+        
+           <section class="classname1">
+            <article class="c11" onclick="location.href='c11.html'"></article>
+            <article class="c12" onclick="location.href='c12.html'"></article>
+            <article class="c13" onclick="location.href='c11.html'"></article>
+            </section>
+            
+            <section class = "classtext1">
+                <article class = "ct11">classname n%</article>
+                <article class = "ct12">classname n%</article>
+                <article class = "ct13">classname n%</article>
+            </section>
+            
+            <section class = "classname2">
+            <article class = "c21"></article>
+            <article class="c22"></article>
+            <article class ="c23"></article>
+            </section>
+            
+             <section class = "classtext2">
+                <article class = "ct21">classname n%</article>
+                <article class = "ct22">classname n%</article>
+                <article class = "ct23">classname n%</article>
+            </section>
+            
+            <section class = "classname3">
+           <article class="c31"></article>
+           <article class="c32"></article>
+           <article class="c33"></article>
+            </section>
+            
+            <section class = "classtext3">
+                <article class = "ct31">classname n%</article>
+                <article class = "ct32">classname n%</article>
+                <article class = "ct33">classname n%</article>
+            </section>
+          
+           
+                <style>
+                  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+                    body {
+                        font-family:'Raleway', sans-serif;
+                        color : #222;
+                        line-height : 1.5em;
+                        font-weight:300;
+                    }
+                    a {
+                        color: #222;
+                        text-decoration: none;
+                    }
+                    .left {
+                        
+                    }
+                    .left a{
+                        display: block;
+                        font-size: 20px;
+                        margin: 15px 0;
+                       
+                    }
+                    .left:hover a {
+                        opacity:0.3;
+                    }
+                    .left a:hover {
+                        opacity:1;
+                    }
+                       </style>
+                          <div class="left">
+                <a href="#none">Notice</a>
+               <a href="#none">Terms and Condition</a>
+               <a href="#none">Privacy Policy</a>
+               <a href="#none">Point Policy</a>
+               <a href="#none">Contact US</a>
+                    
+              
+                </div>  
+    
+        
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>

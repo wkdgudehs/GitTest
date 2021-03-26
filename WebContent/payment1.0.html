@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>결제</title>
+    
+    <link rel ="stylesheet" href="payment1.0.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/hyeongdon.js"></script>
+    <script>
+        $(function(){
+            loginstatus();
+            var lessonId = getQueryString("lessonId");
+            var studentId = getQueryString("studentId");
+            //강좌 상세정보 불러오기
+            $.ajax({
+                url : "./payinfo",
+                method: "get",
+                data: {"lessonId" : lessonId, "studentId" : studentId},
+                success: function(data) {
+                var $articleObj = $("<article>");
+                    $articleObj.attr("class", "lessonpic");
+                $("section.lesson").append($articleObj);
+                var $articleObj1 = $("<article>");
+                    $articleObj1.attr("class", "lessoninfo");
+                var lessonInfo = '<h3>';
+                    lessonInfo += data.lessonName;
+                    lessonInfo += '</h3><span><b>';
+                    lessonInfo += data.lessonTotalFee + "원";
+                    lessonInfo += '</b></span>&nbsp;&nbsp;<span class = "pctg">';
+                    lessonInfo += data.targetPercent + "%";
+                    lessonInfo += '</span>&nbsp;&nbsp;<span class="nctdays">';
+                    lessonInfo += data.diffDays + "일 남음";
+                    lessonInfo += '</span>';
+                    $articleObj1.html(lessonInfo);
+                    $("section.lesson").append($articleObj1);
+                var $articleObj2 = $("<article>");
+                    $articleObj2.attr("class", "myinfo");
+                var myinfo = '<ul>';
+                    myinfo += '<li><b>이름 : </b>';
+                    myinfo += data.studentName;
+                    myinfo += '</li><br><li>';
+                    myinfo += "<b>연락처 : </b>" + data.studentPhone;
+                    myinfo += '</li><br><li>';
+                    myinfo += "<b>이메일 : </b>" + data.studentEmail;
+                    myinfo += '</li></ul>';
+                    $articleObj2.html(myinfo);
+                    $("section.infosection").append($articleObj2);
+                    $(".lessonpic").css("background-image","url('./images/img_mypagelesson_"+ lessonId +".jpg')");
+                }
+            });
+            $("article.goon").click(function(){
+                if ($("article.condition1>input[type=checkbox]").is(":checked") == true && $("article.agrmt1>input[type=checkbox]").is(":checked") == true) {
+                $.ajax({
+                    url : "./registerlesson",
+                    method: "post",
+                    data : {"lessonId" : lessonId, "studentId" : studentId},
+                    success: function(responseObj) {
+                        if(responseObj.status == 1){
+                            // location.href = "http://localhost:8888/C4U/paymentpageb1.0.html";
+                            alert("결제가 완료되었습니다\n결제한 강좌는 마이페이지 > 수강현황에서 확인이 가능합니다.");
+                            location.href = "http://192.168.0.220:8888/C4U";
+                        }else if(responseObj.status == 0) {
+                            alert("이미 등록한 강좌입니다");
+                        }
+                    }
+                });
+                        //체크가 되어있을때.    
+                } else {
+                        alert("모든 약관을 동의해야 결제가 가능합니다");
+                }
+            });
+            $("article.cclt").click(function(){
+                history.back();
+            });
+        });           
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>결제하기</h2>
+        <hr>
+        <br>
+        </div>  
+        <br>
+        <section class="lesson">
+
+        </section>
+         
+          <br>
+          <br>
+          
+        <div class="info">        
+        <h4>내 정보</h4>
+        </div> 
+               
+        <section class="infosection">
+
+        </section>
+                
+    
+       <section> 
+           <article class="condition1"><input type="checkbox" value="구매조건" required>구매 조건 확인</article>
+           <!-- <article class="condition2"><a href="#none">내용보기</a></article> -->
+        </section>
+        
+        <section>
+           <article class="agrmt1"><input type="checkbox" value="결제진행" required>결제 진행 동의</article>
+           <!-- <article class="agrmt2"><a href="#none">내용보기</a></article> -->
+        </section>
+       
+     
+     <section>
+         <article class="warning">
+             <h4>선택하신 강좌는 환불되지 않습니다.</h4>
+         </article>
+     </section>
+       
+       
+       <section>
+           <article class="cclt">
+               결제 취소
+           </article>
+           
+           <article class="goon">
+               결제하기
+           </article>
+           
+       </section>
+       
+       
+        <footer>
+        </footer>
+    
+</body>
+</html>

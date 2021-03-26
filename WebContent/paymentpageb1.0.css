@@ -1,0 +1,83 @@
+/*전체영역*/
+*{
+    list-style-type: none;
+    text-decoration: none;
+    color : #222;
+}
+.container {
+    border : 1px solid white;
+    width : 1920px;
+   
+   text-align:center;
+    vertical-align:middle;
+    display:table-cell;
+    background-attachment: fixed;
+}
+/*헤더*/
+header {
+    background-color : white;
+    height : 40px;
+}
+
+header article {
+    background-color : white;
+    width : 140px;
+    text-align:center;
+}
+/*헤더의메뉴*/
+.category{
+   display: inline-block;
+    
+}
+.classopen{
+    display: inline-block;
+}
+.logo{
+    display: inline-block;
+    width : 300px;
+}
+.search{
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:left;
+    width:200px;
+    border-radius:60px;
+}
+.login{
+    display: inline-block;
+}
+.join{
+    display: inline-block;
+}
+
+.text{
+    margin-top:180px;
+    margin-left:700px;
+}
+
+.firstline {
+    display:block;
+    
+}
+
+
+
+.left{
+    display: inline-block;
+    margin-top:100px;
+    margin-left:510px;
+    padding: 10px 20px;
+    background-color: lightgrey;
+}
+
+.right{
+    display: inline-block;
+    margin-top:100px;
+    margin-left:60px;
+     padding: 10px 20px;
+    background-color: lightgrey;
+    
+}
+
+
+

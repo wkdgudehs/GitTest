@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+body {
+    font-family:'Raleway', sans-serif;
+    color : #222;
+    line-height : 1.5em;
+    font-weight:300;
+}
+.container {
+    border : 1px solid white;
+    width : 1920px;
+    text-align:center;
+    vertical-align:middle; display:table-cell;
+}
+header {
+    background-color : white;
+    height : 40px;
+}
+header article {
+    background-color : white;
+    width : 140px;
+    text-align:center;
+}
+.category{
+   display: inline-block;
+    
+}
+.classopen{
+    display: inline-block;
+}
+.logo{
+    display: inline-block;
+    width : 300px;
+}
+.search{
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:left;
+    width:200px;
+    border-radius:60px;
+}
+.login{
+    display: inline-block;
+}
+.join{
+    display: inline-block;
+}
+/*공지사항 상세 스타일*/
+/*hr 선 연하게 지정*/
+body hr{
+    opacity: 35%;
+}
+/*공지사항 대제목*/
+div.container>div.noticeTitle{
+    text-align:left;
+    font-size: 35px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 15.8%;
+}
+/*공지사항 상세 테이블 스타일*/
+table.noticeDetailTable{
+    margin-top:40px;
+    margin-left: 15.8%;
+    border-collapse:collapse;
+    text-align:center;
+    width:1030px;
+    height:300px;
+    border-style: solid;
+    border-width: thin 1px;
+}
+tr.noticeDetailRow{
+    border: 1px solid;
+}
+th.noticeDetailTitle{
+    text-align:left;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    height: 40px;
+}
+td.noticeDetailDate{
+    text-align:left;
+    padding-left: 20px;
+    font-size: 20px;
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+td.noticeDetailContent{
+    text-align:left;
+    padding-left: 20px;
+    padding-top: 0px;
+}
+.backToNoticeMain{
+    width: 250px;
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 60px;
+}
+.moreviews {
+    margin-left:160px;
+}
+.tableviews {
+    margin-left:-160px;
+}
+.thebiggestbox {
+}
+.pic {
+    width:1040px;
+    height :350px;
+    background-color:lightgrey;
+    display:inline-block;
+}
+
+/*푸터영역 스타일*/
+.left {
+    text-align:left;
+    background-color:lightgrey;
+    border-top-color:lightgrey;
+    border-top:150px;
+    border-bottom-color:lightgrey;
+    border-bottom:50px;
+}
+a {
+    color: #222;
+    text-decoration: none;
+}
+.left {
+}
+.left a{
+    display: block;
+    font-size: 20px;
+    margin: 15px 0;
+    
+}
+.left:hover a {
+    opacity:0.3;
+}
+.left a:hover {
+    opacity:1;
+}
+footer {
+}

@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+*{
+    list-style-type: none;
+}
+body {
+    font-family:'Raleway', sans-serif;
+    color : #222;
+    line-height : 1.5em;
+    font-weight:300;
+}
+.container {
+    border : 1px solid white;
+    width : 1920px;
+    text-align:center;
+    vertical-align:middle;
+    display:table-cell;
+    justify-content:center;
+}
+header {
+    background-color : white;
+    height : 100px;
+    /* position: fixed; */
+    
+    align-items:center;
+    justify-content:center;
+}
+header article {
+    background-color : white;
+    width : 140px;
+    text-align:center;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.category{
+   display: inline-block;
+    
+}
+.mypage{
+    display: inline-block;
+}
+.classopen{
+    display: inline-block;
+}
+.logo{
+    display: inline-block;
+    width : 300px;
+}
+.search{
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:left;
+    width:200px;
+    border-radius:60px;
+    height: 40px;
+}
+.search>input {
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:center;
+    width:200px;
+    border-radius:60px;
+    border-width: 0px;
+    height: 40px;
+}
+input:focus {outline:none;}
+.login{
+    display: inline-block;
+}
+.join{
+    display: inline-block;
+}
+.logout{
+    display: inline-block;
+}
+.classname1{
+    margin-left: 200px;
+    display:inline-block;
+    width: 1080px;
+    text-align:left;
+    list-style-type: none;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+.classname1>article{
+    width:330px;
+    height:350px;
+    background-color:lightgrey;
+    display:inline-block;
+    margin:80px 15px 15px 15px;
+    text-align:left;
+}
+.classname1>article>ul{
+    padding: 0px;
+    margin: 0px;
+}
+/*공지사항 스타일*/
+/*hr 선 연하게 지정*/
+body hr{
+    opacity: 35%;
+}
+/*공지사항 제목*/
+div.noticetitle{
+    text-align:left;
+    font-size: 35px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 15.8%;
+}
+/*공지사항 표 스타일 */
+.noticetable {
+    margin-top:40px;
+    margin-left: 25%;
+    border-collapse:collapse;
+    text-align:center;
+    width:800px;
+    /* height:600px; */
+    border-style: solid;
+    border-width: thin 1px;
+    margin-bottom: 
+}
+/*공지사항 첫번째 행 번호 영역 스타일*/
+th.no{
+    border-style: solid;
+    border-width: thin 1px;
+    width: 50px;
+    /* line-height: 15px; */
+    font-size:15px;
+}
+/*공지사항 첫번째 행 제목 영역 스타일 */
+th.title{
+    border-style: solid;
+    border-width: thin 1px;
+    width: 600px;
+    /* line-height: 15px; */
+    font-size:15px;
+}
+/*공지사항 첫번째 행 작성일 영역 스타일 */
+th.date{
+    border-style: solid;
+    border-width: thin 1px;
+    width: 150px;
+    font-size:15px;
+}
+/*공지사항 내용 행 번호영역 스타일 */
+td.notice_id{
+    border-style: solid;
+    border-width: thin 1px;
+    line-height: 15px;
+    width: 50px;
+}
+/*공지사항 내용 행 제목영역 스타일 */
+td.notice_title{
+    border-style: solid;
+    border-width: thin 1px;
+    width: 600px;
+    line-height: 15px;
+    text-align: left;
+    padding-left: 10px;
+}
+td.notice_title:hover{
+    font-weight:bold;
+}
+
+/*공지사항 내용 행 작성일영역 스타일 */
+td.notice_date{
+    border-style: solid;
+    border-width: thin 1px;
+    width: 150px;
+}
+/*더보기 버튼 스타일*/
+.seemore{
+    width: 600px;
+    margin-left: 2.5%;
+    height: 50px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/*공지사항 상세 테이블 스타일*/
+.noticeDetailTable{
+    margin-top:40px;
+    margin-left: 15.8%;
+    border-collapse:collapse;
+    text-align:center;
+    width:1030px;
+    height:300px;
+    border-style: solid;
+    border-width: thin 1px;
+}
+/*공지사항 상세 행 전부 스타일*/
+.noticeDetailRow{
+    border: 1px solid;
+}
+/*공지사항 상세 제목 스타일*/
+.noticeDetailTitle{
+    text-align:left;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    height: 40px;
+}
+/*공지사항 상세 날짜 스타일*/
+.noticeDetailDate{
+    text-align:left;
+    padding-left: 20px;
+    font-size: 20px;
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/*공지사항 상세 내용 스타일*/
+.noticeDetailContent{
+    text-align:start;
+    padding-left: 20px;
+    padding-top: 0px;
+}
+/*공지사항 상세 목록으로돌아가기 스타일*/
+.backToNoticeMain{
+    width: 250px;
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 60px;
+    font-size: 18px;
+}
+
+.moreviews {
+    margin-left:160px;
+}
+
+.tableviews {
+    margin-left:-160px;
+}
+
+
+/*푸터영역 스타일*/
+.left {
+    background-color:lightgrey;
+    border-top-color:lightgrey;
+    border-top:150px;
+    border-bottom-color:lightgrey;
+    border-bottom:50px;
+    height: 160px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #787878;
+}
+a {
+    color: #222;
+    text-decoration: none;
+}
+.left {
+}
+.left a{
+    display: block;
+    font-size: 20px;
+    margin: 15px 0;
+   font-weight: bold;
+}
+.left:hover a {
+    opacity:0.3;
+    color: #787878;
+}
+.left a:hover {
+    opacity:1;
+    color: #787878;
+}
+footer {
+    text-align:left;
+}
+div.bg{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    border: 1px solid;
+    left: 0px;
+    top: 50px;
+    width: 140px;
+    height: 610px;
+    margin: 10px;
+    overflow: auto;
+    /* 레이어 색깔 */
+    background-color: rgb(231, 231, 231, 0.5);
+    border-width: 0px;
+}
+div.bg>div.modal{
+    margin-top: 15px;
+}

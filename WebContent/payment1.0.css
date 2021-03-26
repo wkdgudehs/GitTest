@@ -1,0 +1,109 @@
+/*전체영역*/
+.container {
+    border : 1px solid white;
+    width : 1920px;
+   
+   text-align:center;
+    vertical-align:middle;
+    display:table-cell;
+    background-attachment: fixed;
+}
+/*헤더*/
+
+/*강좌의사진*/
+.lessonpic{
+    background-color: lightgrey;
+    width: 200px;
+    height: 150px;
+    display: inline-block;
+    margin-left:430px;
+}
+ /*강좌의정보*/   
+.lessoninfo{
+      display: inline-block;
+    
+     margin-left:20px;
+}
+
+.pctg{
+    color:rgb(255,0,0);
+}
+
+/*내정보*/
+.info {
+    margin-left:430px;
+}
+
+.myinfo {
+    border:lightgrey solid 1px;
+    border-radius:5px;
+    width:600px;
+    height:130px;
+    margin-left:430px;
+    display: block;
+    padding-left:40px;
+    padding-top:5px;
+    padding-bottom:15px;
+    
+}
+/*체크박스*/
+.condition1{
+    display: inline-block;
+    margin-left:700px;
+    margin-top:30px;
+}
+.condition2{
+      display: inline-block;
+    margin-left:30px;
+     margin-top:30px;
+}
+
+.agrmt1{
+      display: inline-block;
+    margin-left:700px;
+    margin-top:2px;
+    text-decoration: none;
+    color : #222;
+}
+.agrmt2{
+      display: inline-block;
+    margin-left:30px;
+    margin-top:2px;
+    text-decoration: none;
+    color : #222;
+}
+
+.warning{
+    text-align: center;
+    /* margin-left:430px; */
+    margin-top:60px;
+    color:rgb(255,0,0);
+}
+/*결제*/
+.cclt{
+       display: inline-block;
+    margin-left:570px;
+    margin-top:50px;
+    background-color:lightgrey;
+    padding:10px 40px;
+    margin-bottom:60px;
+}
+
+.cclt:hover{
+    background-color:grey;
+}
+
+.goon {
+     display: inline-block;
+     margin-top:50px;
+    background-color:lightgrey;
+    margin-left:60px;
+    padding:10px 40px;
+    margin-bottom:60px;
+}
+
+.goon:hover{
+    background-color:grey;
+}
+
+

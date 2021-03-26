@@ -1,0 +1,247 @@
+.container {
+    border : 1px solid white;
+    width : 1920px;
+   text-align:center;
+    vertical-align:middle; display:table-cell;
+    background-attachment: fixed;
+
+
+}
+header {
+    background-color : white;
+    height : 40px;
+}
+
+header article {
+    background-color : white;
+    width : 140px;
+    text-align:center;
+}
+.category{
+   display: inline-block;
+    
+}
+.classopen{
+    display: inline-block;
+}
+.logo{
+    display: inline-block;
+    width : 300px;
+}
+.search{
+    display: inline-block;
+    background-color: lightgrey;
+    text-align:left;
+    width:200px;
+    border-radius:60px;
+}
+.login{
+    display: inline-block;
+}
+.join{
+    display: inline-block;
+}
+   
+.lessonname{
+     text-align:center;
+    margin:35px 10px;
+}
+
+.lessonpic {
+    display: inline-block;
+    background-color: lightgrey;
+    width: 500px;
+    height: 430px;
+    
+}
+
+.lessontext{
+    display:inline-block;
+    list-style:none;
+    text-align:left;
+}
+
+.lessonmoney{
+    display:inline-block;
+    padding: 5px 20px;
+    background-color:white;
+    border:2px solid black;
+    border-radius : 5px;
+    padding: 3px 120px 3px 120px;
+     
+}
+.register{
+    display:inline-block;
+    padding: 5px 10px;
+    background-color:white;
+    border-radius:10px;
+    border:2px solid black;
+    margin: 0px 0px 0px 130px;
+    padding: 5px 20px 5px 20px;
+}
+
+.good{
+      margin:10px 30px 0px 550px;
+    display:inline-block;
+}
+
+.rcmd{
+      display:inline-block;
+    margin:10px 30px 0px 30px;
+}
+
+.share{
+      display:inline-block;
+    margin:10px 30px 0px 30px;
+}
+
+.detailcate{
+    list-style:none;
+    padding:10px 20px;
+    width:400px;
+    float:left;
+}
+.detailcate li{
+    width:100px;
+    box-sizing:border-box;
+    display: inline-block;
+    text-align: center;
+}
+
+.menu1{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.menu2{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.menu3{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.menu4{
+    text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.rcmd{
+     display:inline-block;
+    width:45x;
+    height:30px;
+     margin-left:350px;
+    border-radius:30px;
+    margin-bottom:20px;
+      background-color:lightgrey;
+    padding: 5px 15px;
+    
+}
+
+
+
+
+.nonrcmd{
+     display:inline-block;
+      width:45x;
+    height:30px;
+    border-radius:30px;
+    margin-bottom:20px;
+      background-color:lightgrey;
+    padding: 5px 15px;
+}
+.rcmd:hover{
+   
+      background-color:grey;
+  
+    }
+.nonrcmd:hover{
+     
+      background-color:grey;
+   
+    }
+
+.menu5{
+   
+  text-align:left;
+    display:block;
+    margin: 0px 0px 0px 80px;
+    
+}
+
+.detailbox1{
+    width:1100px;
+    height:1400px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.teacherbox1{
+    width:1100px;
+    height:400px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.teacherbox2{
+     width:1100px;
+    height:400px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.teacherbox3{
+     width:1100px;
+    height:400px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.materialbox1{
+     width:1100px;
+    height:600px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.registerbox1{
+     width:1100px;
+    height:800px;
+    background-color:lightgrey;
+    display:block;
+}
+
+.reviews{
+     display:inline-block;
+    float:left;
+      margin-left:80px;
+}
+
+.rsubmit{
+    margin-top:5px;
+    margin-bottom:5px;
+    display:inline-block;
+    width:150px;
+    height:130px;
+    background-color:lightgrey;
+    }
+
+.rsubmit:hover{
+    
+    background-color:grey;
+    }
+
+
+
+
+

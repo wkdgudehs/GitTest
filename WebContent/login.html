@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+        body *{
+            box-sizing: border-box;
+            font-family:'Raleway', sans-serif;
+            color : #222;
+            line-height : 1.5em;
+            font-weight:300;
+        }
+
+        li.loginText{
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            left: 50px;
+        }
+
+        div.loginAction>ul{
+            list-style: none;
+            padding-left: 0px;
+            position: relative;
+            margin-left:40%;
+            margin-top:20%;
+        }
+
+        input.emailInput, input.pwdInput{
+            width: 250px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        input.btLogin{
+            width: 250px;
+            margin-bottom: 10px;
+            background-color: rgb(255, 87, 87);
+            color:white;
+            font-weight: bold;
+            border: 0px;
+        }
+
+        li.signIn, li.findPwd{
+            font-size: 8px;
+            line-height: 20px;
+            letter-spacing: -0.015em;
+        }
+        li.signIn{
+            margin-left: 50px;
+        }
+        li.findPwd{
+            margin-left: 60px;
+        }
+        </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        console.log("스크립트시작");
+        $(function(){
+            let $formObj = $("ul>form");
+            console.log("form 객체찾기");
+            $formObj.submit(function(){
+                var emailValue = $("input[class=emailInput]").val();
+                var pwdValue = $("input[class=pwdInput]").val();
+
+                var url = "./login";
+                var method = "post";
+                var data ={"student_email": emailValue, "student_pwd":pwdValue};
+                console.log("값설정");
+                //localStorage.removeItem("loginInfo");
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: data,
+                    success: function(responseObj){
+                        if(responseObj.status ==1){
+                            console.log("로그인성공")
+                            alert("로그인 성공");
+                        	//localStorage.setItem("loginInfo", emailValue);
+                            location.href="http://192.168.0.220:8888/C4U";
+                        }else{
+                            alert("로그인 실패");
+                        }
+                    },
+                    error: function(jqXHR){
+                        alert("응답실패: "+jqXHR.status);
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+    </head>
+    <body>
+        <section>
+            <div class="loginAction">
+                <ul>
+                    <form method="post">
+                    <li class="loginText">로그인</li>
+                    <li><input type="text" placeholder="이메일을 입력하세요" class="emailInput"></li>
+                    <li><input type="password" placeholder="비밀번호를 입력하세요" class="pwdInput"></li>
+                    <li><input type="submit" value="로그인" class="btLogin"></li>
+                    </form>
+                    <li class="signIn">아직 계정이 없으신가요? <a href="signup1.0.html">회원가입</a></li>
+                    <li class="findPwd"><a href="findpwd.html">혹시 비밀번호를 잊으셨나요?</a></li>
+                </ul>
+            </div>
+        </section>
+    </body>
+</html>
